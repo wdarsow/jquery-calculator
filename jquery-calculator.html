@@ -88,6 +88,16 @@ $(".btn btn-primary number").click(function()
     console.log
 )
 
+let curValue = $("#result").val();
+if (curValue == "0") {
+    curValue = "";
+}
+
+let toAdd = $(this).text();
+
+let newValue = curValue toAdd;
+
+$("#result").val(newValue);
 
 $("#button-plus").click(function(){
     console.log("this is a test");
