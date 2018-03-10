@@ -77,42 +77,82 @@
 
 <script type="text/javascript">
 
-$(document).ready(function(){
+$(document).ready(function() {
+    console.log("ready");
 
-//$("p").click(function(){
-  //  alert("The paragraph was clicked.");
-//});
+// variables
 
+let firstNumber = "";
+let secondNumber = "";
+let operator = "";
+let result = "";
 
-$(".btn btn-primary number").click(function()
-    console.log
-)
+// functions
 
-let curValue = $("#result").val();
-if (curValue == "0") {
-    curValue = "";
+const clear = function() {
+    firstNumber = "";
+    secondNumber = ""; 
+    operator = "";
+    result = "";
+    $('#first-number, #second-number, #operator, #result').empty();
+    $('#operator').empty();
+    console.log('first number');
 }
 
-let toAdd = $(this).text();
+$('#button-clear').click(clear);
 
-let newValue = curValue toAdd;
+// number function
 
-$("#result").val(newValue);
 
-$("#button-plus").click(function(){
-    console.log("this is a test");
+    $('.number').click(function() {
+        if(operator === "") {
+            result = "";
+            $('#result').empty();
+            firstNumber += $(this).val();
+            console.log(firstNumber);
+            $('#first-number').text(firstNumber);
+    } else {
+            secondNumber += $(this).val();
+            console.log(secondNumber);
+            $('#second-number').text(secondNumber);
+    }
+})
+
+
+// operator function
+$('.operator').click(function() {
+    operator = $(this).val();
+    $('#operator').text($(this).text());
+})
+
+// equals function
+
+$('.equal').click(function() {
+    firstNumber = parseInt(firstNumber, 10);
+    secondNumber = parseInt(secondNumber, 10);
+
+    if(operator === 'plus') {
+        result = firstNumber + secondNumber;
+    } else if(operator === 'minus') {
+        result = firstNumber - secondNumber;
+    } else if(operator === 'divide') {
+        result = firstNumber / secondNumber;
+    } else if(operator === 'times') {
+        result = firstNumber * secondNumber;
+    } else if(operator === 'power') {
+        result = firstNumber ** secondNumber;
+        // math.pow(firstNumber, secondNumber)
+    }
+
+$('#result').text(result);
+
+})
+
+
+
 });
 
-$("#button-minus")
-$("#button-multiply")
-$("#button-divide")
-$("#button-power")
-$("#button-equal")
-$("#button-clear")
-
-$("#result")
-
-});
+//console.log(theCobWeb.biggestWeb.biggerWeb.items[0]);
 
 </script>
 
